@@ -1,7 +1,6 @@
 import os
 import discord
 from discord.ext import commands
-import requests
 from dotenv import load_dotenv
 import cat
 
@@ -25,10 +24,6 @@ async def catfact(ctx):
 
 @client.command()
 async def catpic(ctx):
-    resp = requests.get('https://api.thecatapi.com/v1/images/search')
-    if resp.status_code == 200:
-        for item in resp.json():
-            await ctx.send(item['url'])
-
-
+    await ctx.send(catbot.send_image())
+    
 client.run(token)

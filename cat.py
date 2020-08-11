@@ -1,4 +1,5 @@
 import random
+import requests
 
 class Cat():
     #genereate random meow
@@ -11,3 +12,9 @@ class Cat():
 
     def send_fact(self):
         pass
+    
+    def send_image(self):
+        resp = requests.get('https://api.thecatapi.com/v1/images/search')
+        if resp.status_code == 200:
+            for item in resp.json():
+                return item['url']
