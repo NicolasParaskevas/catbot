@@ -1,6 +1,11 @@
+import os
 import discord
 import random
 import requests
+from dotenv import load_dotenv
+
+load_dotenv()
+token = os.getenv('DISCORD_TOKEN')
 
 class Cat():
     #genereate random meow
@@ -31,4 +36,4 @@ class Catbot(discord.Client):
         if message.content.startswith("!catfact"):
             return
 client = Catbot()
-client.run('token')
+client.run(token)
