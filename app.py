@@ -20,7 +20,7 @@ async def meow(ctx):
 
 @client.command()
 async def catfact(ctx):
-    await ctx.send("{} Cat facts coming soon".format(ctx.message.author.mention))
+    await ctx.send("{} {}".format(ctx.message.author.mention, catbot.send_fact()))
 
 @client.command()
 async def catpic(ctx):
