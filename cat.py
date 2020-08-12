@@ -18,9 +18,13 @@ class Cat():
             #return the first fact
             for data in item['data']:
                 return data['fact']
+        else:
+            return "API catfact.ninja returned HTTP status code {}".format(resp.status_code)
     
     def send_image(self):
         resp = requests.get('https://api.thecatapi.com/v1/images/search')
         if resp.status_code == 200:
             for item in resp.json():
                 return item['url']
+        else:
+            return "API thecatapi.com returned HTTP status code {}".format(resp.status_code)
