@@ -8,6 +8,8 @@ load_dotenv()
 token = os.getenv('DISCORD_TOKEN')
 
 client = commands.Bot(command_prefix = '!')
+client.remove_command('help')
+
 catbot = cat.Cat()
 
 @client.event
@@ -25,5 +27,18 @@ async def catfact(ctx):
 @client.command()
 async def catpic(ctx):
     await ctx.send(catbot.send_image())
+
+@client.command()
+async def help(ctx):
+    help_embed = discord.Embed(
+        title = "Catbot",
+        url = "https://github.com/NicolasParaskevas/catbot",
+        colour = discord.Colour.blue()
+    )
+    help_embed.add_field(name="!catfact", value="Replies with a fact about cats", inline=False)
+    help_embed.add_field(name="!catpic", value="Returns random cat picture", inline=False)
+    help_embed.add_field(name="!meow", value="Cat meows back", inline=False)
+    help_embed.set_footer(text="Made by Nicolas Paraskevas https://github.com/NicolasParaskevas")
+    await ctx.send(embed = help_embed)
     
 client.run(token)
